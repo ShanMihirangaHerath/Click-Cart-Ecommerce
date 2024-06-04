@@ -23,7 +23,7 @@ function register(){
     xhr.onreadystatechange = function(){
         if(xhr.readyState == 4 && xhr.status == 200){
             var response = xhr.responseText;
-            if(response.status == "Registration Successful !"){
+            if(response == "Registration Successful !"){
                 alert("Registration Successful");
                 window.location = "login.php";
             } else {
