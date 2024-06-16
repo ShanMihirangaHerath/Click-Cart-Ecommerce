@@ -61,3 +61,21 @@ function login(){
     xhr.open("POST", "loginProcess.php", true);
     xhr.send(dataForm);
 }
+
+function signout(){
+    var xhr = new XMLHttpRequest();
+
+    xhr.onreadystatechange = function(){
+        if(xhr.readyState == 4 && xhr.status == 200){
+            var response = xhr.responseText;
+            if(response == "Signout Successful !"){
+                alert("Signout Successful");
+                window.location = "login.php";
+            } else {
+                alert(response);
+            }
+        }
+    }
+    xhr.open("GET", "signoutProcess.php", true);
+    xhr.send();
+}

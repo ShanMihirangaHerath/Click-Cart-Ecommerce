@@ -9,71 +9,50 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg bg-body-secondary" data-bs-theme="dark">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">Click-Cart</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="#">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-warning" href="#">Cart</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              More
-            </a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">My Profile</a></li>
-              <li><a class="dropdown-item" href="#">My Sellings</a></li>
-              <li><a class="dropdown-item" href="#">My Products</a></li>
-              <li><a class="dropdown-item" href="#">Watchlist</a></li>
-              <li><a class="dropdown-item" href="#">Purchase History</a></li>
-              <li><a class="dropdown-item" href="#">Messages</a></li>
-              <li><a class="dropdown-item" href="#">Contact Admin</a></li>
-              <li>
-                <hr class="dropdown-divider">
-              </li>
-              <li><a class="dropdown-item" href="#">Terms of Service</a></li>
-              <li><a class="dropdown-item" href="#">Privacy Policy</a></li>
+  <!-- Topbar -->
+  <div class="topbar">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 col-md-12 col-12">
+          <!-- Top Left -->
+          <div class="top-left">
+            <ul class="list-main">
+              <li><i class="bi bi-telephone-fill"></i> +94 71 212 3792</li>
+              <li><i class="bi bi-envelope-at-fill"></i> info@clickcart.com</li>
             </ul>
-          </li>
-          <?php
-          session_start();
-          if (isset($_SESSION['user'])) {
-            $data = $_SESSION['user'];
-          ?>
-            <li class="nav-item">
-              <a class="nav-link" aria-disabled="">Hello <?php echo $data["fname"]; ?></a>
-            </li>
-            <li class="nav-item" onclick="logout();">
-              <a class="nav-link">Sign Out</a>
-            </li>
-          <?php
-          } else {
-          ?>
-            <li class="nav-item">
-              <a class="nav-link text-success" href="login.php">Sign In</a>
-            </li>
-          <?php
-          }
-          ?>
-        </ul>
-        <form class="d-flex" role="search">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
+          </div>
+          <!--/ End Top Left -->
+        </div>
+        <div class="col-lg-8 col-md-12 col-12">
+          <!-- Top Right -->
+          <div class="right-content">
+            <ul class="list-main">
+              <li><i class="bi bi-geo-alt-fill"></i> Store location</li>
+              <?php 
+              require "connection.php";
+              session_start();
+              if(isset($_SESSION['user'])) {
+                $userdata = $_SESSION["user"]
+                ?>
+                <li><i class="bi bi-person-circle"></i><a href="#" class="text-decoration-none"><?php echo $userdata["fname"]; ?></a></li>
+                <li><i class="bi bi-box-arrow-left"></i><a href="login.html" class="text-decoration-none" onclick="signout();">Logout</a></li>
+                <?php
+              }else {
+                ?>
+                <li><i class="bi bi-box-arrow-in-right"></i><a href="login.php" class="text-decoration-none">Login</a></li>
+                <li><i class="bi bi-box-arrow-in-right"></i><a href="register.php" class="text-decoration-none">Register</a></li>
+                <?php
+              }
+              ?>             
+            </ul>
+          </div>
+          <!-- End Top Right -->
+        </div>
       </div>
     </div>
-
-  </nav>
-  <script src="js/bootstrap.js"></script>
-  <script src="js/bootstrap.bundle.js"></script>
-  <script src="js/bootstrap.min.js"></script>
+  </div>
+  <!-- End Topbar -->
+   <script src="js/script.js"></script>
 </body>
 
 </html>
